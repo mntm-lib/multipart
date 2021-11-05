@@ -1,5 +1,5 @@
 import type { Buffer } from 'buffer';
-import type { Headers } from './headers.js';
+import type { FormDataHeaders } from './headers.js';
 
 import { formHeaders } from './headers.js';
 import { formLexer } from './lexer.js';
@@ -10,11 +10,18 @@ import {
   SPECIAL_ENCODING
 } from './const.js';
 
-type Result = Record<string, {
+export type FormDataModel = Record<string, {
+  headers: FormDataHeaders;
   content: Buffer;
-  headers: Headers;
 }>;
 
+/**
+ * FormData parser.
+ * Works well even with very bad data.
+ *
+ * @param buf - buffer containing multipart/form-data
+ * @returns parsed data
+ */
 export const formParser = (buf: Buffer) => {
   const parsed = formLexer(buf).map((part) => {
     return {
@@ -37,7 +44,7 @@ export const formParser = (buf: Buffer) => {
     });
   }
 
-  const result: Result = {};
+  const result: FormDataModel = {};
 
   parsed.forEach((part) => {
     result[part.headers.name] = part;

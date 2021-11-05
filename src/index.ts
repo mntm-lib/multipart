@@ -1,5 +1,7 @@
-export type { Headers } from './headers.js';
-export type { FormPart } from './lexer.js';
+export type { FormDataModel } from './parser.js';
+export type { FormDataHeaders } from './headers.js';
+export type { FormDataPart } from './lexer.js';
+export type { FormDataSimple } from './stringify.js';
 
 export {
   formHeaders
@@ -12,3 +14,11 @@ export {
 export {
   formParser
 } from './parser.js';
+
+export {
+  formStringify
+} from './stringify.js';
+
+export {
+  BOUNDARY
+} from './const.js';

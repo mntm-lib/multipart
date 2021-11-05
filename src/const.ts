@@ -42,3 +42,9 @@ export const EMPTY = Buffer.allocUnsafe(0);
 
 export const ENCODING = 'encoding';
 export const SPECIAL_ENCODING = '_charset_';
+
+export const LINE = '\r\n';
+export const SEPARATOR = LINE + LINE;
+
+export const BOUNDARY = '--A';
+export const BOUNDARY_END = '--';

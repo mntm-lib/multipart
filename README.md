@@ -1,6 +1,6 @@
 # @mntm/multipart [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/maxi-team/multipart/blob/master/LICENSE)
 
-Probably the fastest most compatible lexer and parser for multipart/form-data.
+Probably the fastest most compatible lexer/parser/stringifier for multipart/form-data.
 
 ## Usage
 
@@ -18,6 +18,14 @@ Otherwise use parser:
 import { formParser } from '@mntm/multipart';
 
 const parsed = formParser(buffer);
+```
+
+For stiringify data to multipart/form-data:
+
+```js
+import { fromStringify, BOUNDARY } from '@mntm/multipart';
+
+const body = fromStringify({});
 ```
 
 ## Installation

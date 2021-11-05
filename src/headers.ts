@@ -14,7 +14,7 @@ import {
   TYPE_MIXED
 } from './const.js';
 
-export type Headers = {
+export type FormDataHeaders = {
   name: string;
   mime?: string;
   filename?: string;
@@ -22,8 +22,15 @@ export type Headers = {
   transfer?: string;
 };
 
+/**
+ * FormData headers parser.
+ * Works well even with very bad data.
+ *
+ * @param buf - buffers containing raw headers
+ * @returns parsed headers
+ */
 export const formHeaders = (buf: Buffer[]) => {
-  const headers: Headers = {
+  const headers: FormDataHeaders = {
     name: DEFAULT_NAME
   };
 

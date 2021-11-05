@@ -16,7 +16,7 @@ import {
   MARK
 } from './const.js';
 
-export type FormPart = {
+export type FormDataPart = {
   headers: Buffer[];
   content: Buffer;
 };
@@ -45,11 +45,11 @@ const enum STATE {
  * @param buf - buffer containing multipart/form-data
  * @returns lexed parts
  */
-export const formLexer = (buf: Buffer): FormPart[] => {
+export const formLexer = (buf: Buffer): FormDataPart[] => {
   const total = buf.length;
 
   let current = 0;
-  const parts: FormPart[] = [];
+  const parts: FormDataPart[] = [];
 
   let b = 0;
   let i = 0;

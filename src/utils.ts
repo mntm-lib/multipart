@@ -1,6 +1,6 @@
 /* eslint-disable no-bitwise */
 
-import type { Buffer } from 'buffer';
+import { Buffer } from 'buffer';
 
 export const is7bit = (char: number): boolean => {
   return (char & 127) === char;
@@ -23,11 +23,7 @@ export const lowerCase7bit = (char: number): number => {
 };
 
 export const lowerCase = (buf: Buffer): Buffer => {
-  const raw = buf.slice();
-
-  raw.forEach(lowerCase7bit);
-
-  return raw;
+  return Buffer.from(buf.map(lowerCase7bit), 0, buf.byteLength);
 };
 
 export const stringify = (buf: Buffer): string => {
