@@ -8,7 +8,7 @@ import {
 } from './const.js';
 
 import { extname } from 'path';
-import { getType } from 'mime';
+import { default as mime } from 'mime';
 
 export type FormDataSimple = Record<string, string | number | {
   filename: string;
@@ -31,7 +31,7 @@ export const formStringify = (form: FormDataSimple) => {
 
     if (typeof value === 'object') {
       const ext = extname(value.filename).slice(1);
-      const type = getType(ext) || 'application/octet-stream';
+      const type = mime.getType(ext) || 'application/octet-stream';
 
       result += `content-disposition: form-data; name="${name}"; filename="${value.filename}"${LINE}content-type: ${type}${SEPARATOR}${value.content.toString('binary')}`;
     } else {
